@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Héritage des Avatars — Interface flexible</title>
+  <style>
+    :root{--fg:#222;--bg:#fff;--muted:#666;--accent:#2b6cb0;--border:#ddd}
+    body{margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; color:var(--fg); background:var(--bg)}
+    .wrap{max-width:760px; margin:0 auto; padding:16px}
+    header{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:12px 0}
+    .step{font-size:.9rem; color:var(--muted)}
+    .panel{border:1px solid var(--border); border-radius:10px; padding:16px}
+    .question{margin:0 0 .5rem; font-size:1.25rem}
+    .subtitle{margin:.2rem 0 1rem; color:var(--muted)}
+    .choices{display:grid; grid-template-columns:1fr; gap:8px}
+    @media(min-width:640px){ .choices{grid-template-columns:1fr 1fr} }
+    .btn{appearance:none; border:1px solid var(--border); background:#f8f8f8; padding:12px; border-radius:10px; cursor:pointer; text-align:left}
+    .btn strong{display:block; margin-bottom:4px}
+    .btn[aria-pressed="true"]{border-color:var(--accent); background:#eef5ff}
+    .footer{display:flex; align-items:center; justify-content:space-between; gap:8px; margin-top:12px}
+    .progress{flex:1; height:8px; background:#f1f1f1; border:1px solid var(--border); border-radius:999px; overflow:hidden}
+    .bar{height:100%; width:0; background:var(--accent);}
+    .controls{display:flex; gap:8px}
+    .nav{appearance:none; border:1px solid var(--border); background:#fff; padding:10px 12px; border-radius:8px; cursor:pointer}
+    .nav.primary{background:#2b6cb0; color:#fff; border-color:#2b6cb0}
+    .nav:disabled{opacity:.5; cursor:not-allowed}
+    .reveal{margin-top:12px; padding:12px; border:1px dashed var(--border); border-radius:8px; color:#333; background:#fcfcfc}
+    .result{margin-top:16px; padding:16px; border:1px solid var(--border); border-radius:10px; display:none}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>🧬 L’Héritage des Avatars</h1>
+      <div class="step" id="stepLabel">Étape</div>
+    </header>
+
+    <section class="panel" aria-live="polite">
+      <h2 class="question" id="questionText">Titre du dilemme</h2>
+      <p class="subtitle" id="questionSubtitle">Sous-titre…</p>
+
+      <div class="choices" role="group" aria-labelledby="questionText">
+        <button class="btn" id="choiceA" data-choice="A" aria-pressed="false">
+          <strong>A — Choix A</strong>
+          <span class="muted">Description courte A</span>
+        </button>
+        <button class="btn" id="choiceB" data-choice="B" aria-pressed="false">
+          <strong>B — Choix B</strong>
+          <span class="muted">Description courte B</span>
+        </button>
+      </div>
+
+      <div class="reveal" id="subtleBox" hidden>
+        <strong>Conséquence subtile :</strong>
+        <span id="subtleText">—</span>
+      </div>
+
+      <div class="footer">
+        <div class="progress" aria-label="Progression">
+          <div class="bar" id="progressBar" style="width:0%"></div>
+        </div>
+        <div class="controls">
+          <button class="nav" id="prevBtn">◀ Précédent</button>
+          <button class="nav primary" id="nextBtn" disabled>Suivant ▶</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="result" id="resultBox" aria-live="polite">
+      <h3 id="endingTitle">Métavers final</h3>
+      <p id="endingText">Texte de fin.</p>
+      <details>
+        <summary>Voir le récapitulatif</summary>
+        <p id="recapText">A, B, …</p>
+      </details>
+    </section>
+  </div>
+
+  <script>
+    const choiceButtons = [document.getElementById('choiceA'), document.getElementById('choiceB')];
+    const nextBtn = document.getElementById('nextBtn');
+    const prevBtn = document.getElementById('prevBtn');
+    const subtleBox = document.getElementById('subtleBox');
+    const subtleText = document.getElementById('subtleText');
+
+    const dilemmas = [
+      { title: 'D1 — Masquer ou refléter ?', subtitle: 'Choisissez la politique d’apparence.', A: 'Masquer', B: 'Refléter' },
+      { title: 'D2 — Libre ou norme ?', subtitle: 'Liberté vs contrainte.', A: 'Libre choix', B: 'Norme imposée' },
+      { title: 'D3 — Identité ?', subtitle: 'Un avatar ou plusieurs.', A: 'Unique', B: 'Multiples' },
+      { title: 'D4 — Marché ?', subtitle: 'Éthique ou améliorations.', A: 'Propriété', B: 'Améliorés' },
+      { title: 'D5 — Mémoire ?', subtitle: 'Authenticité vs réécriture.', A: 'Intégrale', B: 'Reconstruction' }
+    ];
+
+    let step = 0;
+    const answers = new Array(dilemmas.length).fill(null);
+
+    function render(){
+      const d = dilemmas[step];
+      document.getElementById('questionText').textContent = d.title;
+      document.getElementById('questionSubtitle').textContent = d.subtitle;
+      document.getElementById('stepLabel').textContent = `Étape ${Math.min(step+1,dilemmas.length)}/${dilemmas.length}`;
+      choiceButtons[0].querySelector('strong').textContent = `A — ${d.A}`;
+      choiceButtons[1].querySelector('strong').textContent = `B — ${d.B}`;
+      choiceButtons.forEach(btn => btn.setAttribute('aria-pressed','false'));
+      if(answers[step]){
+        const chosen = answers[step]==='A' ? choiceButtons[0] : choiceButtons[1];
+        chosen.setAttribute('aria-pressed','true');
+        nextBtn.disabled = false;
+      } else {
+        nextBtn.disabled = true;
+      }
+      const pct = ((step) / (dilemmas.length-1)) * 100;
+      document.getElementById('progressBar').style.width = pct + '%';
+      subtleBox.hidden = true;
+
+      // Si on est à la dernière étape, changer le label du bouton
+      if(step === dilemmas.length - 1){
+        nextBtn.textContent = 'Révéler la fin';
+      } else {
+        nextBtn.textContent = 'Suivant ▶';
+      }
+    }
+
+    choiceButtons.forEach(btn => btn.addEventListener('click', () => {
+      choiceButtons.forEach(b => b.setAttribute('aria-pressed','false'));
+      btn.setAttribute('aria-pressed','true');
+      answers[step] = btn.dataset.choice;
+      nextBtn.disabled = false;
+      subtleText.textContent = btn.dataset.choice === 'A' ? 'Ex. : subtilité du choix A' : 'Ex. : subtilité du choix B';
+      subtleBox.hidden = false;
+    }));
+
+    nextBtn.addEventListener('click', () => {
+      if(step < dilemmas.length - 1){
+        step++;
+        render();
+      } else {
+        document.getElementById('progressBar').style.width = '100%';
+        document.getElementById('resultBox').style.display = 'block';
+        document.getElementById('endingTitle').textContent = 'Fin calculée';
+        document.getElementById('endingText').textContent = 'Séquence : ' + answers.join('');
+        document.getElementById('recapText').textContent = answers.join(', ');
+        nextBtn.disabled = true;
+      }
+    });
+
+    prevBtn.addEventListener('click', () => { if(step > 0){ step--; render(); } });
+
+    render();
+  </script>
+</body>
+</html>
