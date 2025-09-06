@@ -3,65 +3,42 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Héritage des Avatars — Interface avec introduction et data.js intégré</title>
-  <style>
-    :root{--fg:#222;--bg:#fff;--muted:#666;--accent:#2b6cb0;--border:#ddd}
-    body{margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; color:var(--fg); background:var(--bg)}
-    .wrap{max-width:760px; margin:0 auto; padding:16px}
-    header{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:12px 0}
-    .step{font-size:.9rem; color:var(--muted)}
-    .panel{border:1px solid var(--border); border-radius:10px; padding:16px; margin-top:16px}
-    .question{margin:0 0 .5rem; font-size:1.25rem}
-    .subtitle{margin:.2rem 0 1rem; color:var(--muted)}
-    .choices{display:grid; grid-template-columns:1fr; gap:8px}
-    @media(min-width:640px){ .choices{grid-template-columns:1fr 1fr} }
-    .btn{appearance:none; border:1px solid var(--border); background:#f8f8f8; padding:12px; border-radius:10px; cursor:pointer; text-align:left}
-    .btn strong{display:block; margin-bottom:4px}
-    .btn[aria-pressed="true"]{border-color:var(--accent); background:#eef5ff}
-    .footer{display:flex; align-items:center; justify-content:space-between; gap:8px; margin-top:12px}
-    .progress{flex:1; height:8px; background:#f1f1f1; border:1px solid var(--border); border-radius:999px; overflow:hidden}
-    .bar{height:100%; width:0; background:var(--accent);}
-    .controls{display:flex; gap:8px}
-    .nav{appearance:none; border:1px solid var(--border); background:#fff; padding:10px 12px; border-radius:8px; cursor:pointer}
-    .nav.primary{background:#2b6cb0; color:#fff; border-color:#2b6cb0}
-    .nav:disabled{opacity:.5; cursor:not-allowed}
-    .reveal{margin-top:12px; padding:12px; border:1px dashed var(--border); border-radius:8px; color:#333; background:#fcfcfc}
-    .result{margin-top:16px; padding:16px; border:1px solid var(--border); border-radius:10px; display:none}
-    .intro{border:1px solid var(--border); border-radius:10px; padding:20px; background:#fafafa; line-height:1.5}
-    .intro button{margin-top:16px}
-  </style>
+  <title>Héritage des Avatars</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="wrap">
-    <header>
-      <h1>🧬 L’Héritage des Avatars</h1>
+  <div class="container">
+    <!-- Header -->
+    <header class="header-container">
+      <div class="logo">🧬</div>
+      <h1>L’Héritage des Avatars</h1>
       <div class="step" id="stepLabel"></div>
     </header>
 
     <!-- Bloc introduction -->
-    <section class="intro" id="introBox">
+    <section class="user-section" id="introBox">
       <h2 id="introTitle">Introduction</h2>
       <div id="introContent"></div>
-      <button class="nav primary" id="startBtn"></button>
+      <button id="startBtn"></button>
     </section>
 
     <!-- Bloc dilemmes -->
-    <section class="panel" id="dilemmaBox" aria-live="polite" style="display:none">
-      <h2 class="question" id="questionText">Titre du dilemme</h2>
+    <section class="health-data-section" id="dilemmaBox" aria-live="polite" style="display:none">
+      <h2 class="section-header" id="questionText">Titre du dilemme</h2>
       <p class="subtitle" id="questionSubtitle">Sous-titre…</p>
 
       <fieldset class="choices" aria-labelledby="questionText">
-        <button class="btn" id="choiceA" data-choice="A" aria-pressed="false">
+        <button id="choiceA" data-choice="A" aria-pressed="false">
           <strong>A — Choix A</strong>
-          <span class="muted" id="descA"></span>
+          <span id="descA"></span>
         </button>
-        <button class="btn" id="choiceB" data-choice="B" aria-pressed="false">
+        <button id="choiceB" data-choice="B" aria-pressed="false">
           <strong>B — Choix B</strong>
-          <span class="muted" id="descB"></span>
+          <span id="descB"></span>
         </button>
       </fieldset>
 
-      <div class="reveal" id="subtleBox" hidden>
+      <div class="cpu-test-section" id="subtleBox" hidden>
         <strong>Conséquence subtile :</strong>
         <span id="subtleText">—</span>
       </div>
@@ -71,15 +48,15 @@
           <div class="bar" id="progressBar" style="width:0%"></div>
         </div>
         <div class="controls">
-          <button class="nav" id="prevBtn">◀ Précédent</button>
-          <button class="nav primary" id="nextBtn" disabled>Suivant ▶</button>
+          <button id="prevBtn">◀ Précédent</button>
+          <button id="nextBtn" disabled>Suivant ▶</button>
         </div>
       </div>
     </section>
 
     <!-- Résultat -->
-    <section class="result" id="resultBox" aria-live="polite">
-      <h3 id="endingTitle">Métavers final</h3>
+    <section class="user-section" id="resultBox" aria-live="polite" style="display:none">
+      <h2 id="endingTitle">Métavers final</h2>
       <p id="endingText">Texte de fin.</p>
       <details>
         <summary>Voir le récapitulatif</summary>
@@ -90,108 +67,114 @@
 
   <script src="data.js"></script>
 
-<script>
-  // ===== Logique (utilise window.INTRO, window.DILEMMAS, window.ENDINGS) =====
-  const INTRO = window.INTRO || { title: 'Introduction', paragraphs: [], cta: 'Commencer' };
-  const DILEMMAS = (Array.isArray(window.DILEMMAS) && window.DILEMMAS.length) ? window.DILEMMAS : [];
-  const ENDINGS = window.ENDINGS || {};
-  const getEnding = window.getEnding || function(seq){
-    const map = {0:{A:'uniformité',B:'diversité visible'},1:{A:'liberté culturelle',B:'respect culturel'},2:{A:'identité continue',B:'identités multiples'},3:{A:'propriété personnelle',B:'améliorations marchandes'},4:{A:'mémoire intégrale',B:'mémoire réécrite'}};
-    const motifs = String(seq||'').toUpperCase().split('').map((ch,i)=>map[i]?.[ch]||'').filter(Boolean);
-    return { title: `Fin — ${seq}`, body: `Un monde tissé de ${motifs.join(', ')}.` };
-  };
+  <script>
+    // ===== Logique (utilise window.INTRO, window.DILEMMAS, window.ENDINGS) =====
+    const INTRO = window.INTRO || { title: 'Introduction', paragraphs: [], cta: 'Commencer' };
+    const DILEMMAS = (Array.isArray(window.DILEMMAS) && window.DILEMMAS.length) ? window.DILEMMAS : [];
+    const ENDINGS = window.ENDINGS || {};
+    const getEnding = window.getEnding || function(seq){
+      const map = {
+        0:{A:'uniformité',B:'diversité visible'},
+        1:{A:'liberté culturelle',B:'respect culturel'},
+        2:{A:'identité continue',B:'identités multiples'},
+        3:{A:'propriété personnelle',B:'améliorations marchandes'},
+        4:{A:'mémoire intégrale',B:'mémoire réécrite'}
+      };
+      const motifs = String(seq||'').toUpperCase().split('').map((ch,i)=>map[i]?.[ch]||'').filter(Boolean);
+      return { title: `Fin — ${seq}`, body: `Un monde tissé de ${motifs.join(', ')}.` };
+    };
 
-  const startBtn = document.getElementById('startBtn');
-  const introBox = document.getElementById('introBox');
-  const introTitle = document.getElementById('introTitle');
-  const introContent = document.getElementById('introContent');
-  const dilemmaBox = document.getElementById('dilemmaBox');
-  const choiceButtons = [document.getElementById('choiceA'), document.getElementById('choiceB')];
-  const nextBtn = document.getElementById('nextBtn');
-  const prevBtn = document.getElementById('prevBtn');
-  const subtleBox = document.getElementById('subtleBox');
-  const subtleText = document.getElementById('subtleText');
+    const startBtn = document.getElementById('startBtn');
+    const introBox = document.getElementById('introBox');
+    const introTitle = document.getElementById('introTitle');
+    const introContent = document.getElementById('introContent');
+    const dilemmaBox = document.getElementById('dilemmaBox');
+    const choiceButtons = [document.getElementById('choiceA'), document.getElementById('choiceB')];
+    const nextBtn = document.getElementById('nextBtn');
+    const prevBtn = document.getElementById('prevBtn');
+    const subtleBox = document.getElementById('subtleBox');
+    const subtleText = document.getElementById('subtleText');
 
-  let step = 0;
-  let finished = false;
-  const answers = new Array(DILEMMAS.length).fill(null);
+    let step = 0;
+    let finished = false;
+    const answers = new Array(DILEMMAS.length).fill(null);
 
-  // Intro rendering
-  introTitle.textContent = INTRO.title || 'Introduction';
-  introContent.innerHTML = (INTRO.paragraphs||[]).map(p=>`<p>${p}</p>`).join("");
-  startBtn.textContent = INTRO.cta || 'Commencer';
-  document.getElementById('stepLabel').textContent = 'Introduction';
+    // Intro rendering
+    introTitle.textContent = INTRO.title || 'Introduction';
+    introContent.innerHTML = (INTRO.paragraphs||[]).map(p=>`<p>${p}</p>`).join("");
+    startBtn.textContent = INTRO.cta || 'Commencer';
+    document.getElementById('stepLabel').textContent = 'Introduction';
 
-  startBtn.addEventListener('click', () => {
-    introBox.style.display = 'none';
-    dilemmaBox.style.display = 'block';
-    render();
-  });
-
-  function render(){
-    const d = DILEMMAS[step];
-    document.getElementById('questionText').textContent = d.title;
-    document.getElementById('questionSubtitle').textContent = d.subtitle || '';
-    document.getElementById('stepLabel').textContent = `Étape ${Math.min(step+1,DILEMMAS.length)}/${DILEMMAS.length}`;
-
-    choiceButtons[0].querySelector('strong').textContent = `A — ${d.A}`;
-    document.getElementById('descA').textContent = d.aDesc || '';
-    choiceButtons[1].querySelector('strong').textContent = `B — ${d.B}`;
-    document.getElementById('descB').textContent = d.bDesc || '';
-
-    choiceButtons.forEach(btn => btn.setAttribute('aria-pressed','false'));
-    if(answers[step]){
-      const chosen = answers[step]==='A' ? choiceButtons[0] : choiceButtons[1];
-      chosen.setAttribute('aria-pressed','true');
-      nextBtn.disabled = false;
-    } else {
-      nextBtn.disabled = true;
-    }
-
-    const pct = ((step + 1) / DILEMMAS.length) * 100;
-    document.getElementById('progressBar').style.width = pct + '%';
-    subtleBox.hidden = true;
-    finished = false;
-    nextBtn.textContent = (step === DILEMMAS.length - 1) ? 'Révéler la fin' : 'Suivant ▶';
-  }
-
-  choiceButtons.forEach(btn => btn.addEventListener('click', () => {
-    choiceButtons.forEach(b => b.setAttribute('aria-pressed','false'));
-    btn.setAttribute('aria-pressed','true');
-    answers[step] = btn.dataset.choice;
-    nextBtn.disabled = false;
-    const d = DILEMMAS[step];
-    const subtle = answers[step]==='A' ? (d.aSubtle||'') : (d.bSubtle||'');
-    subtleText.textContent = subtle;
-    subtleBox.hidden = !subtle;
-  }));
-
-  nextBtn.addEventListener('click', () => {
-    if(finished){
-      step = 0;
-      answers.fill(null);
-      document.getElementById('resultBox').style.display = 'none';
+    startBtn.addEventListener('click', () => {
+      introBox.style.display = 'none';
+      dilemmaBox.style.display = 'block';
       render();
-      return;
-    }
-    if(step < DILEMMAS.length - 1){
-      step++;
-      render();
-    } else {
-      document.getElementById('progressBar').style.width = '100%';
-      const seq = answers.join('');
-      const ending = ENDINGS[seq] || getEnding(seq);
-      document.getElementById('endingTitle').textContent = ending.title || `Fin — ${seq}`;
-      document.getElementById('endingText').textContent = ending.body || ('Séquence : ' + seq);
-      document.getElementById('recapText').textContent = answers.join(', ');
-      document.getElementById('resultBox').style.display = 'block';
-      nextBtn.disabled = false;
-      nextBtn.textContent = 'Rejouer ↺';
-      finished = true;
-    }
-  });
+    });
 
-  prevBtn.addEventListener('click', () => { if(step > 0){ step--; render(); } });
-</script>
+    function render(){
+      const d = DILEMMAS[step];
+      document.getElementById('questionText').textContent = d.title;
+      document.getElementById('questionSubtitle').textContent = d.subtitle || '';
+      document.getElementById('stepLabel').textContent = `Étape ${Math.min(step+1,DILEMMAS.length)}/${DILEMMAS.length}`;
+
+      choiceButtons[0].querySelector('strong').textContent = `A — ${d.A}`;
+      document.getElementById('descA').textContent = d.aDesc || '';
+      choiceButtons[1].querySelector('strong').textContent = `B — ${d.B}`;
+      document.getElementById('descB').textContent = d.bDesc || '';
+
+      choiceButtons.forEach(btn => btn.setAttribute('aria-pressed','false'));
+      if(answers[step]){
+        const chosen = answers[step]==='A' ? choiceButtons[0] : choiceButtons[1];
+        chosen.setAttribute('aria-pressed','true');
+        nextBtn.disabled = false;
+      } else {
+        nextBtn.disabled = true;
+      }
+
+      const pct = ((step + 1) / DILEMMAS.length) * 100;
+      document.getElementById('progressBar').style.width = pct + '%';
+      subtleBox.hidden = true;
+      finished = false;
+      nextBtn.textContent = (step === DILEMMAS.length - 1) ? 'Révéler la fin' : 'Suivant ▶';
+    }
+
+    choiceButtons.forEach(btn => btn.addEventListener('click', () => {
+      choiceButtons.forEach(b => b.setAttribute('aria-pressed','false'));
+      btn.setAttribute('aria-pressed','true');
+      answers[step] = btn.dataset.choice;
+      nextBtn.disabled = false;
+      const d = DILEMMAS[step];
+      const subtle = answers[step]==='A' ? (d.aSubtle||'') : (d.bSubtle||'');
+      subtleText.textContent = subtle;
+      subtleBox.hidden = !subtle;
+    }));
+
+    nextBtn.addEventListener('click', () => {
+      if(finished){
+        step = 0;
+        answers.fill(null);
+        document.getElementById('resultBox').style.display = 'none';
+        render();
+        return;
+      }
+      if(step < DILEMMAS.length - 1){
+        step++;
+        render();
+      } else {
+        document.getElementById('progressBar').style.width = '100%';
+        const seq = answers.join('');
+        const ending = ENDINGS[seq] || getEnding(seq);
+        document.getElementById('endingTitle').textContent = ending.title || `Fin — ${seq}`;
+        document.getElementById('endingText').textContent = ending.body || ('Séquence : ' + seq);
+        document.getElementById('recapText').textContent = answers.join(', ');
+        document.getElementById('resultBox').style.display = 'block';
+        nextBtn.disabled = false;
+        nextBtn.textContent = 'Rejouer ↺';
+        finished = true;
+      }
+    });
+
+    prevBtn.addEventListener('click', () => { if(step > 0){ step--; render(); } });
+  </script>
 </body>
 </html>
