@@ -167,3 +167,37 @@ p {
   color: #555;
   margin: 0.5rem 0;
 }
+
+/* --- Étapes / labels --- */
+.step {
+  background: #4a3aff;
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0.3rem 0.8rem;
+  border-radius: 999px;
+  box-shadow: 0 2px 6px rgba(74, 58, 255, 0.2);
+  align-self: center;
+}
+
+/* --- Sous-titres (Introduction, dilemme, etc.) --- */
+#introTitle,
+#questionText,
+#endingTitle {
+  text-align: left;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #2b2466;
+  margin-bottom: 1rem;
+  padding-left: 0.8rem;
+  border-left: 6px solid #4a3aff;
+  background: linear-gradient(90deg, rgba(74,58,255,0.05), transparent);
+}
+
+/* --- Sous-titres secondaires (ex: Étape "sous-texte") --- */
+.subtitle {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 1rem;
+  font-style: italic;
+}
