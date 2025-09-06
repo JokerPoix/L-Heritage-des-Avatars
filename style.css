@@ -1,0 +1,169 @@
+/* App.css — version créative, moins "cute" mais sympa */
+
+/* Import d’une police moderne */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+body {
+  background: linear-gradient(135deg, #f5f9ff, #eaf7fa);
+  font-family: 'Poppins', 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+/* Container principal */
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* Titres */
+h1, h2 {
+  text-align: center;
+  color: #4a3aff;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+  position: relative;
+  display: inline-block;
+  padding: 0.5rem 1.5rem;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(74, 58, 255, 0.15);
+  border: 2px solid #c9c6ff;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+  gap: 1rem;
+}
+
+/* Logo */
+.logo {
+  width: 70px;
+  height: 70px;
+  background: #4a3aff;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.8rem;
+  font-weight: bold;
+  box-shadow: 0 4px 12px rgba(74, 58, 255, 0.25);
+}
+
+/* Sections type "carte" */
+.user-section,
+.health-data-section,
+.cpu-test-section {
+  background: #ffffff;
+  border: 2px solid #c9e7ff;
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
+}
+
+/* Boutons */
+button {
+  display: inline-block;
+  margin: 1rem auto;
+  padding: 0.9rem 1.6rem;
+  background: #4a3aff;
+  border: none;
+  border-radius: 25px;
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 10px rgba(74, 58, 255, 0.25);
+}
+
+button:hover {
+  background: #3729d1;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 14px rgba(74, 58, 255, 0.3);
+}
+
+button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+/* Choix (A/B) */
+.choices {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+@media (min-width: 640px) {
+  .choices {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.choices button {
+  background: #f7faff;
+  color: #333;
+  border: 2px solid #c9e7ff;
+  border-radius: 12px;
+  text-align: left;
+  padding: 1rem;
+  transition: all 0.25s ease;
+}
+
+.choices button:hover {
+  background: #eef4ff;
+  border-color: #4a3aff;
+}
+
+.choices button[aria-pressed="true"] {
+  background: #e4e0ff;
+  border-color: #4a3aff;
+  color: #2b2466;
+}
+
+/* Progression */
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.progress {
+  flex: 1;
+  height: 10px;
+  background: #f0f0f0;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.bar {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, #4a3aff, #6bc1ff);
+  transition: width 0.4s ease;
+}
+
+/* Résultat */
+#resultBox {
+  border: 2px solid #ffe08a;
+  background: #fffdf5;
+}
+
+/* Texte */
+p {
+  line-height: 1.6;
+  font-size: 1rem;
+  color: #555;
+  margin: 0.5rem 0;
+}
