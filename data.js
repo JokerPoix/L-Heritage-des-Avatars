@@ -108,112 +108,192 @@ window.DILEMMAS = [
 window.ENDINGS = {
   "AAAAA": {
     title:
-      "Masquer / Liberté culturelle / Unique / Propriété / Mémoire intégrale",
+      "Masquer les différences / Liberté culturelle / Un avatar unique / Propriété personnelle / Mémoire intégrale",
     body:
-      "Votre avatar est lissé et uniformisé, tandis que les codes culturels se mélangent librement. L’uniformité des corps contraste avec la bigarrure des styles. La mémoire intégrale rattache chaque choix à une histoire réelle : la liberté s’accompagne d’une responsabilité visible. Les échanges foisonnent, mais la frontière entre respect et appropriation reste sensible."
+        "Dans ce monde, les avatars sont uniformisés. Aucune cicatrice, aucune différence physique visible : tout le monde a un corps lisse et semblable. Pourtant, la liberté culturelle est totale : les utilisateurs empruntent costumes, coiffures ou symboles de toutes les cultures, les mélangeant parfois sans retenue.\n" +
+        "\n" +
+        "Comme chaque avatar est unique et ne peut être remplacé, l’identité est stable et la confiance forte. Personne ne peut se cacher derrière plusieurs visages. L’absence de marché des améliorations renforce une égalité économique stricte : chacun possède son avatar comme un bien inviolable.\n" +
+        "\n" +
+        "La mémoire intégrale conserve l’histoire réelle des utilisateurs. Cela donne de la profondeur aux interactions : derrière les costumes ou les emprunts culturels, il existe une trace de vérité. Le métavers devient un espace visuellement homogène mais culturellement foisonnant, riche en expériences, mais parfois traversé par des débats houleux sur la frontière entre hommage et appropriation.\n"
   },
   "AAAAB": {
     title:
-      "Masquer / Liberté culturelle / Unique / Propriété / Mémoire réécrite",
+      "Masquer / Liberté culturelle / Un avatar unique / Propriété personnelle / Mémoire réécrite",
     body:
-      "Uniformité des corps, liberté des signes culturels, récits polis par la mémoire. Les biographies s’alignent en histoires propres. Le monde est éclatant et fluide, mais la profondeur historique s’efface : beauté et fragilité d’une harmonie de façade."
+        "Tous les avatars ont un corps uniforme, sans stigmates ni différences. La liberté culturelle est totale, permettant aux utilisateurs de se vêtir de n’importe quel habit, d’adopter n’importe quel symbole ou style. Le monde est esthétiquement riche, mais l’identité se fige autour d’un seul avatar.\n" +
+        "\n" +
+        "La mémoire réécrite fragilise cependant les fondations sociales. Chacun choisit les souvenirs qu’il veut montrer ou invente une histoire embellie. Les récits deviennent des fictions, détachées de l’expérience réelle. Les interactions sont fluides, mais la confiance se fait plus superficielle.\n" +
+        "\n" +
+        "Le métavers devient un espace séduisant mais artificiel : stable dans ses formes, coloré par la liberté culturelle, mais miné par une incertitude sur l’authenticité des histoires personnelles."
   },
   "AAABA": {
     title:
-      "Masquer / Liberté culturelle / Unique / Améliorés / Mémoire intégrale",
+      "Masquer / Liberté culturelle / Un avatar unique / Améliorés / Mémoire intégrale",
     body:
-      "Uniforme en surface, perfection discrète achetée : gestes élégants, regards précis. La créativité culturelle attire l’œil et classe les foules. La mémoire vraie sauve la singularité derrière la vitrine et transforme les tensions en occasions d’apprentissage."
+        "L’uniformité physique gomme toute différence, mais chacun peut librement s’approprier des symboles culturels. Un marché des améliorations s’impose : gestes fluides, expressions plus riches, avatars optimisés. Ceux qui investissent dans ces perfectionnements gagnent prestige et visibilité.\n" +
+        "\n" +
+        "La mémoire intégrale permet pourtant de voir les vérités derrière les améliorations et les choix culturels. Les récits personnels équilibrent la hiérarchie économique, rappelant que l’authenticité ne peut être totalement effacée.\n" +
+        "\n" +
+        "Ce monde est un mélange complexe de prestige marchand et d’histoires vraies. L’égalité visuelle de départ masque des hiérarchies subtiles. Le métavers devient une société compétitive mais aussi enrichissante, où la créativité culturelle est libre et parfois polémique."
   },
   "AAABB": {
     title:
-      "Masquer / Liberté culturelle / Unique / Améliorés / Mémoire réécrite",
+      "Masquer / Liberté culturelle / Un avatar unique / Améliorés / Mémoire réécrite",
     body:
-      "Marché du prestige et liberté culturelle créent un éclat permanent. Les récits réécrits lissent les aspérités. Horizon brille, mais une dissonance affleure : quand l’histoire devient décor, que vaut la reconnaissance ?"
+        "Les avatars uniformisés effacent les différences physiques, mais la liberté culturelle rend l’espace éclatant. Chacun peut emprunter ou réinventer des identités culturelles. Les améliorations, achetées ou acquises, créent une hiérarchie nette : certains avatars brillent littéralement par leur fluidité et leur perfection.\n" +
+        "\n" +
+        "La mémoire réécrite ajoute une couche d’artificialité : les histoires personnelles sont embellies, parfois inventées. L’authenticité s’efface au profit du prestige visuel et narratif.\n" +
+        "\n" +
+        "Le métavers devient une scène grandiose mais instable, où tout est performance : identité, culture, souvenirs. Une société fascinante, mais où la vérité disparaît sous la surface des images et récits idéalisés."
   },
   "ABAAA": {
     title:
-      "Masquer / Respect culturel / Unique / Propriété / Mémoire intégrale",
+      "Masquer / Respect culturel / Un avatar unique / Propriété / Mémoire intégrale",
     body:
-      "Uniformité corporelle et conformité culturelle : paysage protégé, écoles sereines, places ordonnées. La mémoire intégrale restaure la profondeur des parcours, au prix d’une esthétique parfois monotone."
+        "Les avatars sont uniformes, aucune différence visible. Les éléments culturels sont strictement encadrés : seuls les membres légitimes ou autorisés peuvent porter des symboles traditionnels. L’avatar unique renforce la stabilité et la confiance.\n" +
+        "\n" +
+        "Comme les avatars ne sont pas améliorables, l’économie est égalitaire. La mémoire intégrale conserve toutes les histoires personnelles, donnant une profondeur sincère aux échanges.\n" +
+        "\n" +
+        "Le métavers apparaît comme un monde discipliné et ordonné, où respect et vérité priment. Mais certains ressentent ce cadre comme étouffant : la créativité est bridée, et la diversité culturelle paraît réduite à une mosaïque figée."
   },
   "ABAAB": {
     title:
-      "Masquer / Respect culturel / Unique / Propriété / Mémoire réécrite",
+      "Masquer / Respect culturel / Un avatar unique / Propriété / Mémoire réécrite",
     body:
-      "Cadre culturel strict et avatars lissés ; les souvenirs se polissent. Tout semble stable et sûr. Sous la surface, la vérité s’atténue : une société efficace, un peu artificielle."
+        "Les corps sont uniformisés et les règles culturelles strictes. L’avatar unique rend l’identité stable, mais la mémoire réécrite permet de remodeler le passé.\n" +
+        "\n" +
+        "Les interactions sociales semblent harmonieuses et respectueuses, mais la vérité historique est brouillée. La cohésion repose sur des récits fabriqués. Le monde est stable, mais une tension invisible existe : tout est encadré, mais peu est entièrement vrai."
   },
   "ABABA": {
     title:
-      "Masquer / Respect culturel / Unique / Améliorés / Mémoire intégrale",
+      "Masquer / Respect culturel / Un avatar unique / Améliorés / Mémoire intégrale",
     body:
-      "Excellence technique et conformité culturelle cohabitent. Les hiérarchies naissent dans le détail des améliorations. La mémoire vraie rend les interactions nuancées et responsables."
+        "Les avatars uniformisés peuvent être perfectionnés par des améliorations payantes : posture élégante, expressions précises, gestes fluides. Le respect culturel encadre strictement les représentations.\n" +
+        "\n" +
+        "La mémoire intégrale renforce la sincérité des échanges. Le métavers devient un espace hiérarchisé mais authentique, où excellence esthétique et respect culturel coexistent. Pourtant, la créativité libre semble confinée dans des marges étroites, étouffée par la discipline sociale."
   },
   "ABABB": {
     title:
-      "Masquer / Respect culturel / Unique / Améliorés / Mémoire réécrite",
+      "Masquer / Respect culturel / Un avatar unique / Améliorés / Mémoire réécrite",
     body:
-      "Prestige esthétique sous contrôle culturel ; harmonie fluide. Les souvenirs édités aplanissent les conflits. Équilibre utile mais friable : l’apparence l’emporte parfois sur l’ancrage."
+        "Uniformité des corps, respect culturel strict, marché des améliorations, mémoire réécrite : ce métavers devient un palais d’ordre et de prestige. Les utilisateurs les plus investis dominent socialement. Les récits sont embellis, gommant blessures et failles.\n" +
+        "\n" +
+        "Le résultat est une société harmonieuse en surface, mais artificielle en profondeur, où authenticité et spontanéité sont sacrifiées au profit de la performance et de la conformité."
   },
-  "BAAA A": {
+  "BAAAA": {
     // (espace volontairement toléré ; getEnding() .replace(/\s/g,'') gère ces cas)
     title:
-      "Refléter / Liberté culturelle / Unique / Propriété / Mémoire intégrale",
+      "Refléter / Liberté culturelle / Un avatar unique / Propriété personnelle / Mémoire intégrale",
     body:
-      "L’avatar reflète vos différences visibles. La liberté culturelle permet d’explorer des identités multiples. La mémoire intégrale donne du contexte : les échanges deviennent profonds, parfois heurtés, mais fertiles."
+        "Les avatars reflètent fidèlement les différences physiques réelles : cicatrices, handicaps, rides. La liberté culturelle est totale, permettant à chacun d’explorer identités et symboles venus d’ailleurs.\n" +
+        "\n" +
+        "Comme les avatars sont uniques et non modifiables, l’identité est stable. L’absence de marché d’amélioration maintient une égalité économique. La mémoire intégrale conserve toutes les histoires, donnant une profondeur riche aux échanges.\n" +
+        "\n" +
+        "Le métavers devient un miroir de la complexité humaine, authentique, foisonnant, parfois conflictuel, mais profondément vivant."
   },
-  "BAAB": {
+  "BAAAB": {
     title:
-      "Refléter / Liberté culturelle / Unique / Propriété / Mémoire réécrite",
+      "Refléter / Liberté culturelle / Un avatar unique / Propriété personnelle / Mémoire réécrite",
     body:
-      "Diversité physique authentique, liberté culturelle et récits adoucis : l’harmonie semble naturelle. Mais la profondeur historique se perd par endroits, donnant aux interactions une fluidité un peu fragile."
+        "Les avatars reflètent la diversité réelle, mais la mémoire est réécrite. Les récits personnels deviennent des fictions. L’identité reste stable grâce à l’avatar unique, mais la liberté culturelle amplifie la créativité, parfois au prix du respect.\n" +
+        "\n" +
+        "Le monde est visuellement riche et humain, mais l’histoire collective devient floue. Le métavers oscille entre authenticité physique et fiction narrative, séduisant mais instable."
   },
-  "BABA": {
+  "BAABA": {
     title:
-      "Refléter / Liberté culturelle / Unique / Améliorés / Mémoire intégrale",
+      "Refléter / Liberté culturelle / Un avatar unique / Améliorés / Mémoire intégrale",
     body:
-      "Apparences vraies et améliorations subtiles : certaines présences captent l’attention. La mémoire intégrale rappelle les chemins réels, invitant à une responsabilité collective."
+        "Les avatars reflètent les différences réelles, et chacun peut explorer librement des traits culturels. Mais les améliorations payantes introduisent une hiérarchie sociale.\n" +
+        "\n" +
+        "La mémoire intégrale conserve les vérités, permettant de voir les parcours derrière chaque perfection. Le métavers devient un marché de prestige et de diversité, où authenticité et inégalités coexistent."
   },
-  "BABB": {
+  "BAABB": {
     title:
-      "Refléter / Liberté culturelle / Unique / Améliorés / Mémoire réécrite",
+      "Refléter / Liberté culturelle / Un avatar unique / Améliorés / Mémoire réécrite",
     body:
-      "Prestige esthétique et liberté culturelle, portés par des souvenirs remodelés. Les scènes sont splendides, les liens parfois décalés par rapport au vécu : élégance et vertige."
+        "La diversité physique et culturelle s’affiche librement, mais chacun peut améliorer son avatar et réécrire son passé.\n" +
+        "\n" +
+        "Le métavers devient une scène spectaculaire et instable, où prestige et fiction dominent. Les vérités s’effacent, et les hiérarchies se renforcent. Une société fascinante, mais fragile."
+  },
+  "BABAA": {
+    title:
+      "Refléter / Respect culturel / Un avatar unique / Propriété personnelle / Mémoire intégrale",
+    body:
+      "Les avatars reflètent la diversité réelle, mais les symboles culturels sont strictement encadrés. L’identité est stable grâce à l’avatar unique.\n" +
+        "\n" +
+        "La mémoire intégrale donne de la profondeur aux interactions. Le métavers devient un monde authentique et respectueux, où les différences sont visibles mais protégées contre l’appropriation."
+  },
+  "BABAB": {
+    title:
+        "Refléter / Respect culturel / Un avatar unique / Propriété personnelle / Mémoire réécrite",
+    body:
+      "La diversité physique est visible, le respect culturel est obligatoire, mais la mémoire peut être réécrite.\n" +
+        "\n" +
+        "Le métavers devient une société stable mais étrange, où les apparences sont vraies, mais les histoires sont fictionnelles. Authenticité et illusion se mélangent subtilement."
+  },
+  "BABBA": {
+    title:
+      "Refléter / Respect culturel / Un avatar unique / Améliorés / Mémoire intégrale",
+    body:
+      "Les avatars reflètent les différences réelles et sont améliorables. Le respect culturel est strict, et la mémoire intégrale préserve la vérité.\n" +
+      "\n" +
+      "Le métavers devient un mélange de prestige et d’authenticité encadrée, où l’excellence esthétique et la sincérité cohabitent, mais dans un cadre rigide."
+  },
+    "BABBB": {
+      title:
+        "Refléter / Respect culturel / Un avatar unique / Améliorés / Mémoire réécrite",
+      body:
+        "Diversité visible, respect culturel strict, avatars améliorables et mémoire réécrite.\n" +
+        "\n" +
+        "Le métavers devient un palais d’images idéalisées, où authenticité visuelle existe, mais les récits sont embellis. Une société respectueuse mais artificielle."
   },
   "BBAAA": {
     title:
-      "Refléter / Respect culturel / Unique / Propriété / Mémoire intégrale",
+      "Refléter / Respect culturel / Un avatar unique / Propriété / Mémoire intégrale",
     body:
-      "Diversité réelle encadrée : validation communautaire et avatars non marchands. Les histoires intactes soutiennent un respect exigeant ; cadre protecteur pour les uns, contrainte pour d’autres."
+        "Chaque utilisateur peut créer plusieurs avatars, reflétant ses différences réelles. Les choix culturels sont encadrés.\n" +
+        "\n" +
+        "La mémoire intégrale relie les expériences à travers les avatars. Le métavers devient un laboratoire d’expérimentation identitaire encadrée, riche et complexe."
   },
   "BBAAB": {
     title:
-      "Refléter / Respect culturel / Unique / Propriété / Mémoire réécrite",
+      "Refléter / Respect culturel / Un avatar unique / Propriété / Mémoire réécrite",
     body:
-      "Sécurité culturelle et récits adoucis : interactions stables, mais la profondeur vécue s’amenuise. L’authenticité se heurte parfois à la convenance."
+        "Plusieurs avatars reflètent la diversité réelle, mais la mémoire peut être réécrite.\n" +
+        "\n" +
+        "Le métavers devient un théâtre de multiplicité et de récits modulés, fascinant, mais où la vérité s’efface."
   },
   "BBABA": {
     title:
-      "Refléter / Respect culturel / Unique / Améliorés / Mémoire intégrale",
+      "Refléter / Respect culturel / Un avatar unique / Améliorés / Mémoire intégrale",
     body:
-      "Améliorations fines et validation culturelle stricte : excellence et prudence marchent ensemble. La mémoire vraie replace les choix dans leur histoire, ce qui densifie les échanges."
+        "Les avatars sont divers, améliorables et encadrés culturellement. La mémoire intégrale garde la profondeur.\n" +
+        "\n" +
+        "Le métavers devient un mélange de respect, prestige et vérité, hiérarchisé mais riche."
   },
   "BBABB": {
     title:
-      "Refléter / Respect culturel / Unique / Améliorés / Mémoire réécrite",
+      "Refléter / Respect culturel / Un avatar unique / Améliorés / Mémoire réécrite",
     body:
-      "Efficacité esthétique et sécurité culturelle. Les souvenirs remodelés soutiennent l’harmonie, mais atténuent l’épaisseur des liens historiques : équilibre stable, profondeur fluctuante."
+        "Les avatars multiples sont divers et améliorés, mais la mémoire est réécrite.\n" +
+        "\n" +
+        "Le métavers devient un marché d’identités multiples et embellies, respectueux culturellement mais artificiel dans ses récits."
   },
   "BBBBA": {
     title:
       "Refléter / Respect culturel / Multiples / Propriété / Mémoire intégrale",
     body:
-      "Multiplicité identitaire encadrée : plusieurs avatars fidèles à soi, reliés par une mémoire commune. Liberté d’exploration, respect des communautés, interactions complexes et nuancées."
+        "Chaque utilisateur possède plusieurs avatars authentiques, respectant les cadres culturels, et la mémoire intégrale relie tout.\n" +
+        "\n" +
+        "Le métavers devient une mosaïque d’identités vraies et disciplinées, riche mais ordonnée."
   },
   "BBBBB": {
     title:
       "Refléter / Respect culturel / Multiples / Améliorés / Mémoire réécrite",
     body:
-      "Créativité encadrée et avatars multiples optimisés ; la mémoire modulable adoucit les aspérités. Monde vibrant et harmonieux, parfois superficiel : la profondeur culturelle se dilue par instants."
+        "Un monde d’avatars multiples, divers, améliorés et culturellement encadrés. La mémoire réécrite fluidifie les récits.\n" +
+        "\n" +
+        "Le métavers devient un univers de perfection modulable, respectueux mais artificiel, où vérité et fiction s’entrelacent sans cesse."
   }
 };
 
